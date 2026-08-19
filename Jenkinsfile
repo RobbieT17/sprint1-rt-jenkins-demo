@@ -28,6 +28,7 @@ pipeline {
             steps {
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
                 archiveArtifacts artifacts: 'target/site/jacoco/**', fingerprint: true
+                archiveArtifacts artifacts: 'target/checkstyle/checkstyle-result.xml', fingerprint: true
             }
         }
     }
