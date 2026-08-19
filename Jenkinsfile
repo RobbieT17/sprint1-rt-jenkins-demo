@@ -11,8 +11,6 @@ pipeline {
         }
         stage('Build') {
             steps {
-                def mvnHome = tool name: 'Maven 3', type: 'maven'
-                sh '${mvnHome}/bin/mvn clean install'
                 sh 'mvn -B clean package'
             }
         }
@@ -22,7 +20,7 @@ pipeline {
             }
             post {
                 always {
-                    junit 'target/test-reports/*.xml'
+                    junit 'target/surefire-reports/*.xml'
                 }
             }
         }
