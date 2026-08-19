@@ -27,6 +27,7 @@ pipeline {
         stage('Archive') {
             steps {
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+                archiveArtifacts artifacts: 'target/site/jacoco', fingerprint: true
             }
         }
     }
