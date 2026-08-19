@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'mvn -B clean package'
+                sh 'mvn -B clean verify'
             }
         }
         stage('Test') {
@@ -27,7 +27,7 @@ pipeline {
         stage('Archive') {
             steps {
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
-                archiveArtifacts artifacts: 'target/site/jacoco', fingerprint: true
+                archiveArtifacts artifacts: 'target/site/jacoco/**', fingerprint: true
             }
         }
     }
